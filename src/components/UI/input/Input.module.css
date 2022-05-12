@@ -1,0 +1,34 @@
+.myInput{
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border-radius: 2rem;
+    width: 80%;
+    height: 3rem;
+    padding: 1rem;
+    border: none;
+    outline: none;
+    color: #CAC6C5;
+    font-size: 1rem;
+    font-weight: 200;
+}
+
+.myInput:focus {
+    display: inline-block;
+    box-shadow: 0 0 0 0.15rem #A39F9E;
+    border-radius: 2rem;
+}
+
+.myInput:hover{
+    width: 90%;    
+    transition: .3s width ease-out; 
+}
+
+.myInput:not(:hover){
+    width: 80%;
+    transition: .3s width ease-out;
+}
+
+.myInput::placeholder{
+    font-weight: 100;
+    font-size: 1rem;
+}

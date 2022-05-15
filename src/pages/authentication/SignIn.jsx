@@ -6,36 +6,75 @@ import Input from '../../components/UI/input/Input.jsx'
 import Button from '../../components/UI/button/Button';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const SignIn = () => {
   const [data, setData] = useState({  login: '', password: '' });
   const url = 'https://localhost:5001/api/login';
+  const [formErrors, setFormErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
   let navigate = useNavigate();
 
-  async function Login(e){ 
-      e.preventDefault();
-      const requestData = { login: data.login, password: data.password};
-      console.log(JSON.stringify(requestData));
-      await fetch(url, {
-        method: 'POST',
-        headers: {
-           'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(requestData)
-      }).then((result) => {
-          if(result.status === 400){
-            console.log('invalid data')
-          }else if(result.status === 200){
-            navigate("../watched", { replace: true });
-          }
-      });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFormErrors(validate(data));
+    setIsSubmit(true);
   }
+
+  useEffect(() => {
+    if(Object.keys(formErrors).length === 0 && isSubmit){
+      Login();
+    }
+  }, [formErrors]);
+
+  const validate = (values) => {
+    const errors= {};
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    if(!values.login){
+      errors.login = "Email is required!"
+    } else if (!regex.test(values.login)){
+      errors.login = "This is not a valid email format!!"
+    }
+
+    if(!values.password){
+      errors.password = "Password is required!"
+    }  else if (values.password.length < 8){
+      errors.password = "Account not found!"
+    } else if (values.password.length > 16){
+      errors.password = "Account not found!"
+    } 
+    return errors;
+  }
+
+  async function Login(){
+    const requestData = { login: data.login, password: data.password};
+    await fetch(url, {
+      method: 'POST',
+      headers: {
+         'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestData)
+    }).then(function(response){
+      if(response.status === 401){
+        setFormErrors({ password: 'Account not found!' });
+      }else if(response.status === 200){
+        navigate("../watched", { replace: true })
+        return response.json();
+      }
+    }).then(function(data) { 
+      if(typeof data !== "undefined"){
+        localStorage.setItem('token', data.token);
+      }
+    });
+  }
+  
   const onChange = (e) => {
     e.persist();
-    console.log(data);
     setData({ ...data, [e.target.name]: e.target.value });
   }
+
   return (
+    <form onSubmit={handleSubmit}>
       <div className='main__container'>
         <div className='sign__in__container'>
           <h2 className='welcome__text'>Welcome</h2>
@@ -45,15 +84,17 @@ const SignIn = () => {
                 name='login' 
                 value={data.login}
                 onChange={onChange}/>
+            <p className='error'>{ formErrors.login }</p>
             <Input 
                 placeholder='Password' 
                 type='password'
                 name='password'
                 value={data.password}
                 onChange={onChange}/>  
+            <p className='error'>{ formErrors.password }</p>
           </div>
           <div className="btn__container">
-            <Button onClick={Login}>Login</Button>
+            <Button>Login</Button>
           </div>
           <div className="link__container">
             <div className="answer__text">Don't have an account?{' '}
@@ -64,6 +105,7 @@ const SignIn = () => {
           </div>
         </div>
       </div>
+    </form>
   )
 }
 

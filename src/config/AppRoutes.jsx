@@ -14,8 +14,8 @@ const AppRoutes = () => {
           <Route path="/" element={<Watchlist/>}/>
           <Route path="/add" element={<Add/>}/>
           <Route path="/watched" element={<Watched/>}/>
-          <Route path="/signup" element={<SignUp/>}/>
           <Route path="/signin" element={<SignIn/>}/>
+          <Route path="/signup" element={<SignUp/>}/>
       </Routes>
     </div>
   )

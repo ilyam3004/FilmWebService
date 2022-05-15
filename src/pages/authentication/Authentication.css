@@ -158,9 +158,14 @@
     width: 100%;
 }
 
-/* .error{
-
-} */
+.error{
+    font-size: 14px;
+    text-transform: none;
+    font-weight: 400;
+    letter-spacing: normal;
+    color: #CACFD2;
+    margin: 100px, 100px, 100px, 100px;
+}
 
   
 

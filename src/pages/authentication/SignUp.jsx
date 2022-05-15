@@ -19,7 +19,6 @@ const SignUp = () => {
   }
 
   useEffect(() => {
-    console.log(formErrors);
     if(Object.keys(formErrors).length === 0 && isSubmit){
       Registration();
     }
@@ -52,7 +51,6 @@ const SignUp = () => {
 
   async function Registration(){
     const requestData = { login: data.login, password: data.password};
-    console.log(JSON.stringify(requestData));
     await fetch(url, {
       method: 'POST',
       headers: {
@@ -61,7 +59,7 @@ const SignUp = () => {
       body: JSON.stringify(requestData)
     }).then((result) => {
         if(result.status === 400){
-          console.log('user with the same email already exists')
+          setFormErrors({ login: 'User with this email already exists!', password: '', confirmPassword: ''});
         }else if(result.status === 200){
           navigate("../signin", { replace: true });
         }
@@ -69,7 +67,6 @@ const SignUp = () => {
   }
   const onChange = (e) => {
     e.persist();
-    console.log(data);
     setData({ ...data, [e.target.name]: e.target.value });
   }
 
@@ -90,13 +87,13 @@ const SignUp = () => {
                   name='password'
                   onChange={onChange}
                   value={data.password}/>
-                  <p>{ formErrors.password }</p>
+                  <p className='error'>{ formErrors.password }</p>
               <Input placeholder='Confirm Password' 
                   type='password'
                   name='confirmPassword'
                   onChange={onChange}
                   value={data.confirmPassword}/>
-                  <p>{ formErrors.confirmPassword }</p>   
+                  <p className='error'>{ formErrors.confirmPassword }</p>   
             </div>
             <div className="btn__container">
               <Button>Sign up</Button>

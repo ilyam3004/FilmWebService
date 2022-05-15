@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Input from '../../components/UI/input/Input';
 import Button from '../../components/UI/button/Button';
@@ -6,12 +6,51 @@ import '../authentication/Authentication.css';
 import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
-  const [data, setData] = useState({  login: '', password: '' });
+  const [data, setData] = useState({  login: '', password: '', confirmPassword: '' });
   const url = 'https://localhost:5001/api/register';
+  const [formErrors, setFormErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
   let navigate = useNavigate();
 
-  async function Registration (e){
+  const handleSubmit = (e) => {
     e.preventDefault();
+    setFormErrors(validate(data));
+    setIsSubmit(true);
+  }
+
+  useEffect(() => {
+    console.log(formErrors);
+    if(Object.keys(formErrors).length === 0 && isSubmit){
+      Registration();
+    }
+  }, [formErrors]);
+
+  const validate = (values) => {
+    const errors= {};
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    if(!values.login){
+      errors.login = "Email is required!"
+    } else if (!regex.test(values.login)){
+      errors.login = "This is not a valid email format!"
+    }
+
+    if(!values.password){
+      errors.password = "Password is required!"
+    }  else if (values.password.length < 8){
+      errors.password = "Password must be more then 8 characters!"
+    } else if (values.password.length > 16){
+      errors.password = "Password must be less then 16 characters!"
+    } 
+    
+    if(!values.confirmPassword){
+      errors.confirmPassword = "Confirm password is required!"
+    } else if(values.confirmPassword !== values.password) {
+      errors.confirmPassword = "Passwords do not match!"
+    }
+    return errors;
+  }
+
+  async function Registration(){
     const requestData = { login: data.login, password: data.password};
     console.log(JSON.stringify(requestData));
     await fetch(url, {
@@ -35,7 +74,7 @@ const SignUp = () => {
   }
 
   return (
-    <form onSubmit={Registration}>
+    <form onSubmit={handleSubmit}>
       <div className='main__container'>
           <div className='sign__up__container'>
             <h2 className='welcome__text'>Create account</h2>
@@ -45,12 +84,19 @@ const SignUp = () => {
                   name="login" 
                   onChange={onChange} 
                   value={data.login}/>
+                  <p className='error'>{ formErrors.login }</p>
               <Input placeholder='Password' 
                   type='password'
                   name='password'
                   onChange={onChange}
                   value={data.password}/>
-              <Input placeholder='Confirm Password' type='password'/>    
+                  <p>{ formErrors.password }</p>
+              <Input placeholder='Confirm Password' 
+                  type='password'
+                  name='confirmPassword'
+                  onChange={onChange}
+                  value={data.confirmPassword}/>
+                  <p>{ formErrors.confirmPassword }</p>   
             </div>
             <div className="btn__container">
               <Button>Sign up</Button>

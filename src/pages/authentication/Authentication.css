@@ -160,11 +160,11 @@
 
 .error{
     font-size: 14px;
+    padding: 8px 8px;
     text-transform: none;
     font-weight: 400;
     letter-spacing: normal;
     color: #CACFD2;
-    margin: 100px, 100px, 100px, 100px;
 }
 
   

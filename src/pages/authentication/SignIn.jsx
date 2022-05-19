@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState } from 'react'
-import '../../App.css';
 import './Authentication.css';
 import Input from '../../components/UI/input/Input.jsx'
 import Button from '../../components/UI/button/Button';
@@ -64,6 +63,7 @@ const SignIn = () => {
     }).then(function(data) { 
       if(typeof data !== "undefined"){
         localStorage.setItem('token', data.token);
+        localStorage.key('key');
       }
     });
   }

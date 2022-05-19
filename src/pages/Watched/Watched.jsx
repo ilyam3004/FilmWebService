@@ -1,9 +1,10 @@
 import React from 'react'
+import Header from '../../components/header/Header';
 
 const Watched = () => {
   return (
     <div>
-      <h1>Watched</h1>
+      <Header/>
     </div>
   )
 }

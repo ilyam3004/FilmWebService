@@ -1,42 +1,45 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { FaBars, FaTimes} from 'react-icons/fa';
+import '../header/header.css'
 
 const Header = () => {
-  return (
-    <header>
-      <div className='container'>
-        <div className='inner-content'>
-          <div className='brand'>
-            <Link to="/">WatchList</Link>
-          </div>
+  const navRef = useRef();
 
-          <ul className='nav-links'>
-            <li>
-              <Link to='/'>Watch List</Link>
+  const showNavBar = () => {
+    navRef.current.classList.toggle('responsive_nav');
+  }
+
+  return (
+      <div className='header'>
+        <nav ref={navRef}>
+          <h3 className='logo'>Movies</h3>
+          <ul className='link-list'>
+            <li className='nav-link'>
+              <Link to='/foryou'>
+                For you
+              </Link> 
             </li>
-            <li>
-              <Link to='/watched'>Watched</Link>
+            <li className='nav-link'>
+              <Link to='/upcoming'>
+                UpComing
+              </Link>
             </li>
-            <li>
-              <Link to='/add' className='btn'>
-                + Add
-                </Link>
+            <li className='nav-link'>
+              <Link to='/watched'>
+                Watched
+              </Link>
             </li>
-            <li>
-              <Link to='/signin' className='btn'>
-                Sign in
-                </Link>
-            </li>
-            <li>
-              <Link to='/signup' className='btn'>
-                Sign up
-                </Link>
+            <li className='nav-link'>
+              <Link to='/watchlist'>
+                WatchList
+              </Link>
             </li>
           </ul>
-        </div>
+          <Link to='/signin' className='login-btn'>Login</Link>
+        </nav>
       </div>
-    </header>
   )
 }
 
-export default Header
+export default Header;

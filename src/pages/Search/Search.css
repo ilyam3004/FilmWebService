@@ -1,0 +1,19 @@
+.search-page{
+    background-color: #212121;
+    width: 100%;
+}
+
+.input-container{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    padding-top: 10%;
+}
+
+.movie-card-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 18px;
+  grid-row-gap: 20px;
+}

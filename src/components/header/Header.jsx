@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { FaBars, FaTimes} from 'react-icons/fa';
 import '../header/header.css'
 
 const Header = () => {
@@ -21,8 +20,8 @@ const Header = () => {
               </Link> 
             </li>
             <li className='nav-link'>
-              <Link to='/upcoming'>
-                UpComing
+              <Link to='/search'>
+                Search
               </Link>
             </li>
             <li className='nav-link'>

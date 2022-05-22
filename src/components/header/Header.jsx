@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import '../header/header.css'
+import './Header.css'
 
 const Header = () => {
   const navRef = useRef();
@@ -14,6 +14,11 @@ const Header = () => {
         <nav ref={navRef}>
           <h3 className='logo'>Movies</h3>
           <ul className='link-list'>
+          <li className='nav-link'>
+              <Link to='/'>
+                Home
+              </Link>
+            </li>
             <li className='nav-link'>
               <Link to='/foryou'>
                 For you
@@ -22,11 +27,6 @@ const Header = () => {
             <li className='nav-link'>
               <Link to='/search'>
                 Search
-              </Link>
-            </li>
-            <li className='nav-link'>
-              <Link to='/watched'>
-                Watched
               </Link>
             </li>
             <li className='nav-link'>

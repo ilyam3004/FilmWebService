@@ -9,20 +9,14 @@ const Search = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
 
-  useEffect(() => {
-    if(query.length <= 0){
-      setEmptyResults()
-    }
-  }, []);
-
-  const setEmptyResults = () => (setResults([]));
   const onChange = (e) => {
     e.preventDefault();
 
-    setQuery(e.target.value);
-    if(query !== ''){
+    setQuery(e.target.value)
+    console.log(e.target.value)
+    if(e.target.value.trim()){
       fetch(
-        `https://localhost:5001/api/search?title=${query}`
+        `https://localhost:5001/api/search?title=${e.target.value}`
       )
       .then((res) => res.json())
       .then((data) => {
@@ -31,9 +25,12 @@ const Search = () => {
         } else {
           setResults([]);
         }
-      });
+      })
+
+    } else{
+      setResults([]);
     }
-  };
+  };  
   
   return (
     <div className='search-page'>
@@ -45,15 +42,17 @@ const Search = () => {
               value={query}
               onChange={onChange}/>
       </div>
-      <div className="movie-card-container">
-        {results.length > 0 && (
-          results.map(movie => (
-            <MovieCard
-              key={movie.id}
-              movie={movie}
-            />
-          ))
-        )}
+      <div className="movie-card-precontainer">
+        <div className="movie-card-container">
+          {results.length > 0 && (
+            results.map(movie => (
+              <MovieCard
+                key={movie.id}
+                movie={movie}
+              />
+            ))
+          )}
+        </div>
       </div>
     </div>
   )

@@ -1,12 +1,11 @@
 import React from 'react'
 import Header from '../../components/header/Header'
-import HeroSlide from '../../components/top-rated/TopRated'
+import './Home.css';
 
 const Home = () => {
   return (
-    <div>
+    <div className='home-page'>
       <Header/>
-      <HeroSlide/>
     </div>
   )
 }

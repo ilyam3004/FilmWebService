@@ -57,13 +57,14 @@ const SignIn = () => {
       if(response.status === 401){
         setFormErrors({ password: 'Account not found!' });
       }else if(response.status === 200){
-        navigate("../watched", { replace: true })
+        navigate("../", { replace: true })
         return response.json();
       }
     }).then(function(data) { 
       if(typeof data !== "undefined"){
         localStorage.setItem('token', data.token);
-        localStorage.key('key');
+        localStorage.setItem('isAuth', true);
+        console.log()
       }
     });
   }

@@ -4,7 +4,13 @@ import './MovieCard.css';
 const MovieCard = ({movie}) => {
   
   const AddToWatchList = () => {
-
+    fetch(`https://localhost:5001/api/watchlist/addmovie?id=${movie.id}`,
+    {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      },
+      method: "POST",
+    })
   }
 
   return (
@@ -25,9 +31,8 @@ const MovieCard = ({movie}) => {
             <div className='overview'>{movie.overview.substring(0, 180) + "..."}</div>
           </div>
           <div className="btn-container">
-            <div className="card-btn" 
-                disabled={!localStorage.getItem('isAuth')}
-                onClick={AddToWatchList}>+ Add</div>
+            <button className="card-btn" disabled={!localStorage.getItem('isAuth')}
+                onClick={AddToWatchList}>+ Add</button>
             <div className="card-btn">More</div>
           </div>
         </div>

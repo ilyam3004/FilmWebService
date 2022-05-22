@@ -34,21 +34,6 @@
     overflow: hidden;
 }
 
-.card-container:hover .subtitle-container{
-    opacity: 1;
-}
-
-.subtitle-container{
-    opacity: 0;
-    transition: opacity .8s;
-}
-
-.card-container:hover .description{
-    transform: translateY(0);
-    border-radius: 20px;
-    height: 350px;
-}
-
 .card-title{
     text-transform: uppercase;
     color: #B9BBBC;
@@ -89,4 +74,19 @@
     font-size: 15px;
     text-decoration: none;
     cursor: pointer;
+}
+
+.card-container:hover .subtitle-container{
+    opacity: 1;
+}
+
+.subtitle-container{
+    opacity: 0;
+    transition: opacity .8s;
+}
+
+.card-container:hover .description{
+    transform: translateY(0);
+    border-radius: 20px;
+    height: 350px;
 }

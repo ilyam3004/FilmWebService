@@ -46,6 +46,9 @@ const SignIn = () => {
   }
 
   async function Login(){
+    
+    localStorage.setItem('isAuth', false);
+
     const requestData = { login: data.login, password: data.password};
     await fetch(url, {
       method: 'POST',
@@ -64,7 +67,6 @@ const SignIn = () => {
       if(typeof data !== "undefined"){
         localStorage.setItem('token', data.token);
         localStorage.setItem('isAuth', true);
-        console.log()
       }
     });
   }

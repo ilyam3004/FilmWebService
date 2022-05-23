@@ -105,6 +105,15 @@ const SignUp = () => {
                 </Link>
               </div>
             </div>
+            <div className="link__container">
+            <div className="answer__text">Want to try without Sign Up?{' '}
+              <Link to='/' 
+                  className='link' 
+                  onClick={() => localStorage.setItem('isAuht', false)}>
+                Click here!
+              </Link>
+            </div>
+          </div>
           </div>
         </div>
       </form>

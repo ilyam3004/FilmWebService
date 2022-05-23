@@ -4,10 +4,10 @@ import './ForYou.css';
 
 const ForYou = () => {
   return (
-    <div>
+    <div className='forYou-page'>
         <Header/>
     </div>
   )
 }
 
-export default ForYou
+export default ForYou;

@@ -5,10 +5,6 @@ import './Header.css'
 const Header = () => {
   const navRef = useRef();
 
-  const showNavBar = () => {
-    navRef.current.classList.toggle('responsive_nav');
-  }
-
   return (
       <div className='header'>
         <nav ref={navRef}>
@@ -35,7 +31,17 @@ const Header = () => {
               </Link>
             </li>
           </ul>
-          <Link to='/signin' className='login-btn'>Login</Link>
+          {localStorage.getItem('isAuth') ? 
+            <Link to='/signin' 
+            className='login-btn'
+            onClick={() => localStorage.clear()}>
+              Log out
+            </Link>
+           : <Link to='/signin' 
+              className='login-btn'>
+                Login
+            </Link>
+          } 
         </nav>
       </div>
   )

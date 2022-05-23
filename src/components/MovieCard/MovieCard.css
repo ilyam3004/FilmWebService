@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin&family=Proza+Libre&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800&display=swap'); 
 
 .card-container{
     width: 250px;
@@ -74,8 +73,43 @@
     font-size: 15px;
     text-decoration: none;
     cursor: pointer;
+    white-space: nowrap;
+    transition-duration: 0.4s;
+    transition-property: box-shadow, background-image, border;
+    transition-duration: 0.4s;
 }
 
+.card-btn:disabled{
+    background: rgba(54, 51, 51, 0.6);
+}
+
+.card-btn:disabled:hover {
+    cursor: default;
+    animation: shake 0.6s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    border-color: transparent;
+}
+  
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%, 80% {
+        transform: translate3d(1px, 0, 0);
+    }
+
+    30%, 50%, 70% {
+        transform: translate3d(-2px, 0, 0);
+    }
+
+    40%, 60% {
+        transform: translate3d(2px, 0, 0);
+    }
+}
+  
 .card-container:hover .subtitle-container{
     opacity: 1;
 }

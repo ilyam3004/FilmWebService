@@ -22,6 +22,7 @@
 .movie-card-precontainer{
   width: 56%;
   margin: auto;
+  margin-bottom: 100px;
 }
 
 .movie-card-container{

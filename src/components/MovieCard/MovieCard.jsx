@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './MovieCard.css';
 
-const MovieCard = ({movie}) => {
+const MovieCard = ({movie, change, watchlist}) => {
   
   const AddToWatchList = () => {
     fetch(`https://localhost:5001/api/watchlist/addmovie?id=${movie.id}`,
@@ -11,6 +11,9 @@ const MovieCard = ({movie}) => {
       },
       method: "POST",
     })
+    const newWatchlist = [...watchlist];
+    newWatchlist.push(movie);
+    change(newWatchlist);
   }
 
   return (
@@ -25,7 +28,11 @@ const MovieCard = ({movie}) => {
         </h3>
         <div className="subtitle-container">
           <p className='release-date'>
-            {movie.release_date.replace(/-/g, '.')}
+            {movie.release_date ? 
+              movie.release_date.replace(/-/g, '.')
+              :
+              "-"
+            }
           </p>
           <div className="overview-container">
             <div className='overview'>{movie.overview.substring(0, 180) + "..."}</div>

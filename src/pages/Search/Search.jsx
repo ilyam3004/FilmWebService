@@ -1,10 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import Input from '../../components/UI/input/Input';
+import Input from '../../components/ui/input/Input';
 import Header from '../../components/header/Header';
-import MovieCard from '../../components/MovieCard/MovieCard';
+import MovieCard from '../../components/movie-card/MovieCard';
 import './Search.css';
-import WatchlistCard from '../../components/MovieCard/WatchlistCard';
+import WatchlistCard from '../../components/movie-card/WatchlistCard';
 
 const Search = () => {
   const [query, setQuery] = useState("");

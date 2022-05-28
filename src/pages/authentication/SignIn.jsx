@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 import './Authentication.css';
-import Input from '../../components/UI/input/Input.jsx'
-import Button from '../../components/UI/button/Button';
+import Input from '../../components/ui/input/Input.jsx'
+import Button from '../../components/ui/button/Button';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';

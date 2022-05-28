@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../components/header/Header';
-import WatchlistCard from '../../components/MovieCard/WatchlistCard';
+import WatchlistCard from '../../components/movie-card/WatchlistCard';
 import './Watchlist.css';
 
 const Watchlist = () => {

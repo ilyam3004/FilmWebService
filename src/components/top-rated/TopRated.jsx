@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import MovieCard from '../MovieCard/MovieCard';
+import MovieCard from '../movie-card/MovieCard';
 import './TopRated.css'
 
 const TopRated = () => {

@@ -3,6 +3,7 @@
 .carousel {
     cursor: grab;
     overflow: hidden;
+    min-height: 20rem;
 }
 
 .inner-carousel{

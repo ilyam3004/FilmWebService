@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
+
+.hero-slide-item-container{
+    width: 100%;
+    height: 100%;
+    padding: 3% 0;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(20, 20, 20, 0.5);
+    -webkit-box-shadow: 5px 10px 50px 21px #000000; 
+    box-shadow: 5px 10px 50px 21px #000000;
+    position: inherit;
+}
+
+.hero-slide-item {
+    padding: 9.3% 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.hero-slide-item-content-container{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-slide-item-content-info{
+    width: 70%;
+}
+
+.hero-slide-item-overview{
+    font-family: 'Lato', sans-serif;
+    color: rgb(180, 167, 167);
+}
+
+.hero-slide-item-title{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 50px;
+    color: rgb(255, 255, 255);
+    padding: 1rem 0;
+}
+
+.hero-slide-item-content-poster{
+    border-radius: 2rem;
+    width: 27%;
+    opacity: 1;
+}
+
+.hero-slide-item-btns{
+    width: 60%;
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Raleway', sans-serif;
+}
+
+.hero-slider-item-add-btn{
+    border: 4px solid transparent;
+    background-color: #ff0000;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0px 0px 7px 8px #ff00004d;
+    transition: box-shadow 0.5s ease;
+    position: relative;
+    border-radius: 2rem;
+    border-width: 2px;
+    padding: 0.7rem 2rem;
+    font-size: 1rem;
+}
+
+.hero-slider-item-add-btn:hover{
+    box-shadow: 0px 0px 7px 15px #ff00004d;
+    cursor: pointer;
+}
+
+.hero-slider-item-more-btn {
+    border: 3px solid #fff;
+    background-color: transparent;
+    color: #fff;
+    box-shadow: unset;
+    transition: color 0.5s ease, background-color 0.3s ease;
+    border-radius: 2rem;
+    border-width: 2px;
+    padding: 0.7rem 3rem;
+    font-size: 1rem;
+}
+
+.hero-slider-item-more-btn:hover {
+    cursor: pointer;
+    box-shadow: unset;
+    color: #ff0000;
+    background-color: #fff;
+}

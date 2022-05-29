@@ -1,12 +1,22 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css'
 
 const Header = () => {
   const navRef = useRef();
 
+  const [color, setColor] = useState(false)
+  const changeColor = () => {
+    if(window.scrollY >= 200) {
+      setColor(true);
+    } else {
+      setColor(false);
+    }
+  }
+
+  window.addEventListener('scroll', changeColor);
   return (
-      <div className='header'>
+      <div className={ color ? 'header header-bg' : 'header'}>
         <nav ref={navRef}>
           <h3 className='logo'>Movies</h3>
           <ul className='link-list'>

@@ -1,16 +1,35 @@
 import React from 'react';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import Header from '../../components/header/Header';
 import './Home.css';
 import Slider from '../../components/slider/Slider';
-import CustomSwiper from '../../components/swiper/CustomSlider.jsx';
+import CustomSwiper from '../../components/swiper/CustomSwiper';
 
 const Home = () => {
   
+  const [popular, setPopular] = useState([]);
   const [topRated, setTopRated] = useState([]);
   const [upComing, setUpComing] = useState([]);
   const [weekTrending, setWeekTrending] = useState([]);
   const [dayTrending, setDayTrending] = useState([]);
+
+  const getPopular = () => {
+    fetch(`https://localhost:5001/api/popular`,
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: "GET",
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data.errors) {
+          setPopular(data.results);
+        } else {
+          setPopular([]);
+        }
+      })
+  }
 
   const getTopRated = () => {
     fetch(`https://localhost:5001/api/top_rated`,
@@ -85,14 +104,20 @@ const Home = () => {
   }
 
   useEffect(() => {
+    getPopular();
     getTopRated();
     getUpComing();
     getWeekTrending();
     getDayTrending();
   }, [])
+
   return (
     <div className='home-page'>
       <Header/>
+      <CustomSwiper
+        movies={popular}  
+      />
+      <div className="empty-container"/>
       <Slider
         title="Top rated"
         movies={topRated}
@@ -113,4 +138,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Home;

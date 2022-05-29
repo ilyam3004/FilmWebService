@@ -10,9 +10,17 @@
 .header{
   position: fixed;
   height: 90px;
+  top: 0;
+  left: 0;
+  transition: .5s ease-in;
   z-index: 1000;
-  background-color: black;
   width: 100%;
+  overflow: hidden;
+  background: transparent;
+  border-bottom: rgba(82, 81, 81, 0.3) 2px solid;
+}
+
+.header-bg{
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(8.5px);
 }

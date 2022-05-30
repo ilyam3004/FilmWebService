@@ -60,7 +60,7 @@ const SignIn = () => {
       if(response.status === 401){
         setFormErrors({ password: 'Account not found!' });
       }else if(response.status === 200){
-        navigate("../", { replace: true })
+        window.location.href="/"
         return response.json();
       }
     }).then(function(data) { 

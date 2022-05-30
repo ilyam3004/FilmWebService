@@ -49,7 +49,8 @@
 .hero-slide-item-content-poster{
     border-radius: 2rem;
     width: 27%;
-    opacity: 1;
+    -webkit-box-shadow: 2px 2px 35px 12px rgba(0,0,0,0.76); 
+    box-shadow: 2px 2px 35px 12px rgba(0,0,0,0.76);
 }
 
 .hero-slide-item-btns{
@@ -75,7 +76,7 @@
     font-size: 1rem;
 }
 
-.hero-slider-item-add-btn:hover{
+.hero-slider-item-add-btn:not(:disabled):hover{
     box-shadow: 0px 0px 7px 15px #ff00004d;
     cursor: pointer;
 }
@@ -90,6 +91,7 @@
     border-width: 2px;
     padding: 0.7rem 3rem;
     font-size: 1rem;
+    text-decoration: none;
 }
 
 .hero-slider-item-more-btn:hover {
@@ -97,4 +99,18 @@
     box-shadow: unset;
     color: #ff0000;
     background-color: #fff;
+}
+
+.hero-slider-item-add-btn:disabled {
+    background: rgba(54, 51, 51, 0.8);
+    box-shadow: none;
+}
+
+.hero-slider-item-add-btn:disabled:hover {
+    cursor: no-drop;
+    animation: shake 1s cubic-bezier(.90,.37,.19,5) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    border-color: transparent;
 }

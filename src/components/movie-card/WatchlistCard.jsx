@@ -1,5 +1,6 @@
 import React from 'react';
 import './MovieCard.css';
+import { Link } from 'react-router-dom';
 
 const WatchlistCard = ({movie, watchlist, change}) => {
    
@@ -41,7 +42,7 @@ const WatchlistCard = ({movie, watchlist, change}) => {
                             <button className="card-btn" 
                                 disabled={!localStorage.getItem('isAuth')}
                                 onClick={DeleteFromWatchList}>Remove</button>
-                            <div className="card-btn">More</div>
+                            <Link to={`/detail/${movie.id}`} className="card-btn">More</Link>
                         </div>
                     </div>
                 </div>

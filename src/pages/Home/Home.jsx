@@ -111,28 +111,64 @@ const Home = () => {
     getDayTrending();
   }, [])
 
+  const [watchlist, setWatchlist] = useState([])
+
+  const getWatchlist = () => {
+    if(localStorage.getItem('isAuth')){
+      fetch(`https://localhost:5001/api/watchlist`,
+      {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+        method: "GET",
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data.errors) {
+          setWatchlist(data.results);
+        } else {
+          setWatchlist([]);
+        }
+      })
+    }
+  }
+
+  useEffect(() => {
+    getWatchlist();
+  }, [])
+
   return (
     <div className='home-page'>
       <Header/>
       <CustomSwiper
-        movies={popular}  
+        movies={popular}
+        watchlist = {watchlist}
+        change={setWatchlist} 
       />
       <div className="empty-container"/>
       <Slider
         title="Top rated"
         movies={topRated}
+        watchlist={watchlist}
+        change={setWatchlist}
       />
       <Slider
         title="Day trending"
         movies={dayTrending}
+        watchlist={watchlist}
+        change={setWatchlist}
       />
       <Slider
         title="Week trending"
         movies={weekTrending}
+        watchlist={watchlist}
+        change={setWatchlist}
       />
       <Slider
         title="Coming soon"
         movies={upComing}
+        watchlist={watchlist}
+        change={setWatchlist}
       />
     </div>
   )

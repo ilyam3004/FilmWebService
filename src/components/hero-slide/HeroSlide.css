@@ -54,7 +54,7 @@
 }
 
 .hero-slide-item-btns{
-    width: 60%;
+    width: 70%;
     padding: 2rem 0;
     display: flex;
     justify-content: space-around;
@@ -113,4 +113,13 @@
     backface-visibility: hidden;
     perspective: 1000px;
     border-color: transparent;
+}
+
+.rate{
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    text-transform: uppercase;
+    padding-left: 3rem;
 }

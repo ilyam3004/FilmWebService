@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './MovieCard.css';
 
 const MovieCard = ({movie, change, watchlist}) => {
@@ -40,7 +41,7 @@ const MovieCard = ({movie, change, watchlist}) => {
           <div className="btn-container">
             <button className="card-btn" disabled={!localStorage.getItem('isAuth')}
                 onClick={AddToWatchList}>+ Add</button>
-            <div className="card-btn">More</div>
+            <Link to={`/detail/${movie.id}`} className="card-btn">More</Link>
           </div>
         </div>
        </div>

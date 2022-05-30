@@ -5,36 +5,16 @@ import MovieCard from '../movie-card/MovieCard';
 import WatchlistCard from '../movie-card/WatchlistCard';
 import { motion } from 'framer-motion';
 
-const Slider = ({movies, title}) => {
+const Slider = ({movies, title, watchlist, change}) => {
 
   const [width, setWidth] = useState(0);
-  const [watchlist, setWatchlist] = useState([]);
   const carousel = useRef();
   
   useEffect(() => {
       setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth)
-      getWatchlist();
   }, []);
 
-  const getWatchlist = () => {
-    if(localStorage.getItem('isAuth')){
-      fetch(`https://localhost:5001/api/watchlist`,
-      {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        },
-        method: "GET",
-      })
-      .then((res) => res.json())
-      .then((data) => {
-        if (!data.errors) {
-          setWatchlist(data.results);
-        } else {
-          setWatchlist([]);
-        }
-      })
-    }
-  }
+
 
   const resultCard = (movie) => {
     if(watchlist.find(item => item.id === movie.id)){
@@ -42,7 +22,7 @@ const Slider = ({movies, title}) => {
         <WatchlistCard
             key={movie.id}
             movie={movie}
-            change={setWatchlist}
+            change={change}
             watchlist={watchlist}/>
       )
     }
@@ -50,7 +30,7 @@ const Slider = ({movies, title}) => {
       <MovieCard
         key={movie.id}
         movie={movie}
-        change={setWatchlist}
+        change={change}
         watchlist={watchlist}/>
     )
   }

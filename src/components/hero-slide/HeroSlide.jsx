@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './HeroSlide.css';
 
-const HeroSlide = ({movie, watchlist, change}) => {
+const HeroSlide = ({movie, watchlist, change, isDetail}) => {
 
   const AddToWatchList = () => {
     fetch(`https://localhost:5001/api/watchlist/addmovie?id=${movie.id}`,
@@ -12,7 +12,9 @@ const HeroSlide = ({movie, watchlist, change}) => {
       },
       method: "POST",
     })
-    change(watchlist.filter((item) => item.id !== movie.id));
+    const newWatchlist = [...watchlist];
+    newWatchlist.push(movie);
+    change(newWatchlist);
   }
   
   const RemoveFromWatchList = () => {
@@ -32,7 +34,7 @@ const HeroSlide = ({movie, watchlist, change}) => {
       return (
         <button className='hero-slider-item-add-btn'
                 disabled={!localStorage.getItem('isAuth')}
-                onClick={RemoveFromWatchList()}>
+                onClick={RemoveFromWatchList}>
              Remove
         </button>
       )
@@ -40,7 +42,7 @@ const HeroSlide = ({movie, watchlist, change}) => {
     return(
       <button className='hero-slider-item-add-btn'
               disabled={!localStorage.getItem('isAuth')}
-              onClick={AddToWatchList()}>
+              onClick={AddToWatchList}>
               Add To Watchlist
       </button>
     )
@@ -58,7 +60,11 @@ const HeroSlide = ({movie, watchlist, change}) => {
                 {movie.overview}
               <div className="hero-slide-item-btns">
                   {resultButton()}
-                  <Link to="/search" className='hero-slider-item-more-btn'>More</Link>
+                  {
+                    isDetail 
+                    ? <div className='rate'>rate:{movie.vote_average}({movie.vote_count})</div>
+                    : <Link to={`/detail/${movie.id}`} className='hero-slider-item-more-btn'>More</Link>
+                  }
               </div>
               </div>
             </div>

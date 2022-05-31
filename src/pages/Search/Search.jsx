@@ -13,7 +13,7 @@ const Search = () => {
 
   const getWatchlist = () => {
     if(localStorage.getItem('isAuth')){
-      fetch(`https://localhost:5001/api/watchlist`,
+      fetch(`https://movie-web-api-service.herokuapp.com/api/watchlist`,
       {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -42,7 +42,7 @@ const Search = () => {
 
     if(e.target.value.trim()){
       fetch(
-        `https://localhost:5001/api/search?title=${e.target.value}`
+        `https://movie-web-api-service.herokuapp.com/api/search?title=${e.target.value}`
       )
       .then((res) => res.json())
       .then((data) => {

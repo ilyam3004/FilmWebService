@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const WatchlistCard = ({movie, watchlist, change}) => {
    
     const DeleteFromWatchList = () => {
-        fetch(`https://localhost:5001/api/watchlist/delete?id=${movie.id}`,
+        fetch(`https://movie-web-api-service.herokuapp.com/api/watchlist/delete?id=${movie.id}`,
         {
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`

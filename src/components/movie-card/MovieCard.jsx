@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './MovieCard.css';
 
 const MovieCard = ({movie, change, watchlist}) => {
   
   const AddToWatchList = () => {
-    fetch(`https://localhost:5001/api/watchlist/addmovie?id=${movie.id}`,
+    fetch(`https://movie-web-api-service.herokuapp.com/api/watchlist/addmovie?id=${movie.id}`,
     {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`

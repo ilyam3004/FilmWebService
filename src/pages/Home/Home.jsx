@@ -14,7 +14,7 @@ const Home = () => {
   const [dayTrending, setDayTrending] = useState([]);
 
   const getPopular = () => {
-    fetch(`https://localhost:5001/api/popular`,
+    fetch(`https://movie-web-api-service.herokuapp.com/api/popular`,
       {
         headers: {
           'Content-Type': 'application/json'
@@ -32,7 +32,7 @@ const Home = () => {
   }
 
   const getTopRated = () => {
-    fetch(`https://localhost:5001/api/top_rated`,
+    fetch(`https://movie-web-api-service.herokuapp.com/api/top_rated`,
       {
         headers: {
           'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ const Home = () => {
   }
   
   const getUpComing = () => {
-    fetch(`https://localhost:5001/api/upcoming`,
+    fetch(`https://movie-web-api-service.herokuapp.com/api/upcoming`,
       {
         headers: {
           'Content-Type': 'application/json'
@@ -68,7 +68,7 @@ const Home = () => {
   }
 
   const getWeekTrending = () => {
-    fetch(`https://localhost:5001/api/trending/week`,
+    fetch(`https://movie-web-api-service.herokuapp.com/api/trending/week`,
       {
         headers: {
           'Content-Type': 'application/json'
@@ -86,7 +86,7 @@ const Home = () => {
   }
 
   const getDayTrending = () => {
-    fetch(`https://localhost:5001/api/trending/day`,
+    fetch(`https://movie-web-api-service.herokuapp.com/api/trending/day`,
       {
         headers: {
           'Content-Type': 'application/json'
@@ -115,7 +115,7 @@ const Home = () => {
 
   const getWatchlist = () => {
     if(localStorage.getItem('isAuth')){
-      fetch(`https://localhost:5001/api/watchlist`,
+      fetch(`https://movie-web-api-service.herokuapp.com/api/watchlist`,
       {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`

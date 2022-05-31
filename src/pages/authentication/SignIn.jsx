@@ -4,15 +4,13 @@ import './Authentication.css';
 import Input from '../../components/ui/input/Input.jsx'
 import Button from '../../components/ui/button/Button';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 const SignIn = () => {
   const [data, setData] = useState({  login: '', password: '' });
-  const url = 'https://localhost:5001/api/login';
+  const url = 'https://movie-web-api-service.herokuapp.com/api/login';
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-  let navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();

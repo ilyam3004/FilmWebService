@@ -8,7 +8,7 @@ const TopRated = () => {
   const [movies, setMovies] = useState([]);
 
   const fetchMovies = async () => {
-    const {data: {results}} = (await axios.get('https://localhost:5001/api/top_rated'));
+    const {data: {results}} = (await axios.get('https://movie-web-api-service.herokuapp.com/api/top_rated'));
     setMovies(results);
     console.log(movies);
   }

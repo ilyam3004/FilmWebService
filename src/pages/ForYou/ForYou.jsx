@@ -9,7 +9,7 @@ const ForYou = () => {
 
   const getWatchlist = () => {
     if(localStorage.getItem('isAuth')){
-      fetch(`https://localhost:5001/api/watchlist`,
+      fetch(`https://movie-web-api-service.herokuapp.com/api/watchlist`,
       {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -31,7 +31,7 @@ const ForYou = () => {
 
   const getRecomendations = () => {
     if(localStorage.getItem('isAuth')){
-      fetch(`https://localhost:4001/api/recomendations?token=${localStorage.getItem('token')}`,
+      fetch(`https://recommendations-web-api.herokuapp.com/api/recomendations?token=${localStorage.getItem('token')}`,
       {
         headers: {
           'Content-Type': 'application/json'

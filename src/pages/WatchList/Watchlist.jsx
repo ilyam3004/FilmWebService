@@ -9,7 +9,7 @@ const Watchlist = () => {
 
   const getWatchlist = () => {
     if(localStorage.getItem('isAuth')){
-      fetch(`https://localhost:5001/api/watchlist`,
+      fetch(`https://movie-web-api-service.herokuapp.com/api/watchlist`,
       {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`

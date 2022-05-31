@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './HeroSlide.css';
 
 const HeroSlide = ({movie, watchlist, change, isDetail}) => {
 
   const AddToWatchList = () => {
-    fetch(`https://localhost:5001/api/watchlist/addmovie?id=${movie.id}`,
+    fetch(`https://movie-web-api-service.herokuapp.com/api/watchlist/addmovie?id=${movie.id}`,
     {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -18,7 +17,7 @@ const HeroSlide = ({movie, watchlist, change, isDetail}) => {
   }
   
   const RemoveFromWatchList = () => {
-    fetch(`https://localhost:5001/api/watchlist/delete?id=${movie.id}`,
+    fetch(`https://movie-web-api-service.herokuapp.com/api/watchlist/delete?id=${movie.id}`,
     {
       headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -75,7 +74,7 @@ const HeroSlide = ({movie, watchlist, change, isDetail}) => {
               </div>
               </div>
             </div>
-              <img src={movie.poster_path} className="hero-slide-item-content-poster"/>
+              <img src={movie.poster_path} className="hero-slide-item-content-poster" alt=""/>
           </div> 
         </div> 
     </div>

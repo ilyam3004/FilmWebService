@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Header from '../../components/header/Header';
 import { useParams } from 'react-router-dom';
 import './Detail.css'
-import YouTube, { YouTubeProps } from 'react-youtube';
+import YouTube from 'react-youtube';
 import HeroSlide from '../../components/hero-slide/HeroSlide';
 
 const Detail = () => {
@@ -16,7 +16,7 @@ const Detail = () => {
 
   const getWatchlist = () => {
     if(localStorage.getItem('isAuth')){
-      fetch(`https://localhost:5001/api/watchlist`,
+      fetch(`https://movie-web-api-service.herokuapp.com/api/watchlist`,
       {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -35,7 +35,7 @@ const Detail = () => {
   }
 
   const getMovie = () => {
-    fetch(`https://localhost:5001/api/movie?id=${id}`,
+    fetch(`https://movie-web-api-service.herokuapp.com/api/movie?id=${id}`,
       {
         headers: {
           'Content-Type': 'application/json'

@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [data, setData] = useState({  login: '', password: '', confirmPassword: '' });
-  const url = 'https://localhost:5001/api/register';
+  const url = 'https://movie-web-api-service.herokuapp.com/api/register';
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   let navigate = useNavigate();

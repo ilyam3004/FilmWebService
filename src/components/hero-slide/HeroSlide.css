@@ -115,11 +115,18 @@
     border-color: transparent;
 }
 
+.info-container{
+    border: 2px solid rgb(183, 181, 181);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
 .rate{
-    color: #fff;
-    font-family: 'Lato', sans-serif;
+    color: rgb(195, 190, 190);
+    font-family: 'Raleway', sans-serif;
     font-size: 15px;
     font-weight: 400;
-    text-transform: uppercase;
     padding-left: 3rem;
+    font-weight: 400;
 }
+

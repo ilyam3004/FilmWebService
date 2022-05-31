@@ -62,7 +62,14 @@ const HeroSlide = ({movie, watchlist, change, isDetail}) => {
                   {resultButton()}
                   {
                     isDetail 
-                    ? <div className='rate'>rate:{movie.vote_average}({movie.vote_count})</div>
+                    ? <div className='info-container'>
+                        <div className="rate">Rate:  {movie.vote_average}({movie.vote_count})</div>
+                        <div className="date">
+                          Release date: {movie.release_date 
+                            ? movie.release_date.replace(/-/g, '.')
+                            : "-"}
+                      </div>
+                      </div>
                     : <Link to={`/detail/${movie.id}`} className='hero-slider-item-more-btn'>More</Link>
                   }
               </div>

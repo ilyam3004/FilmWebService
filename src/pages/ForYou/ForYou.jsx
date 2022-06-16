@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useSyncExternalStore } from 'react';
 import Header from '../../components/header/Header';
 import CustomSwiper from '../../components/swiper/CustomSwiper';
+import { SyncLoader } from 'react-spinners';
 import './ForYou.css';
 
 const ForYou = () => {
 
-  const [watchlist, setWatchlist] = useState([])
+  const [watchlist, setWatchlist] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const getWatchlist = () => {
     if(localStorage.getItem('isAuth')){
@@ -28,7 +30,8 @@ const ForYou = () => {
   }
 
   const [recomendations, setRecomendations] = useState([]);
-
+  const [filteredRecs, setFilteredRecs] = useState();
+  
   const getRecomendations = () => {
     if(localStorage.getItem('isAuth')){
       fetch(`https://recommendations-web-api.herokuapp.com/api/recomendations?token=${localStorage.getItem('token')}`,
@@ -42,7 +45,7 @@ const ForYou = () => {
       .then((data) => {
         if (!data.errors) {
           setRecomendations(data.results);
-          console.log(data.results)
+          setLoading(false)
         } else {
           setRecomendations([]);
         }
@@ -51,7 +54,13 @@ const ForYou = () => {
   }
 
   const checkRecomendationsErrors = () => {
-    if(!localStorage.getItem('isAuth')){
+    if(loading){
+      return(
+        <div className='rec-error-container'>
+          <SyncLoader color={"#fff"} loading={loading} size={15}/>
+        </div>
+      )
+    }else if(!localStorage.getItem('isAuth')){
       return (
         <div className='rec-error-container'>
           <h2>You are unauthorised  (•︵•)</h2>
@@ -72,18 +81,21 @@ const ForYou = () => {
     } else {
       return (
           <CustomSwiper
-            movies={recomendations}
+            movies={filteredRecs}
             watchlist={watchlist}
             change={setWatchlist}/>
       )
     }
   }
 
+  const setFiltered = () => {
+    setFilteredRecs(recomendations.filter((movie) => !watchlist.find(watchlistMovie => (watchlistMovie.title === movie.title)))
+                         .reverse()
+                         .slice(0, 30));
+  }
   useEffect(() => {
-    getWatchlist();
     getRecomendations();
-    console.log(watchlist)
-    console.log(recomendations)
+    getWatchlist();
   }, [])
 
   return (

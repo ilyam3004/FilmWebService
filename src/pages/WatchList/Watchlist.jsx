@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import Header from '../../components/header/Header';
 import WatchlistCard from '../../components/movie-card/WatchlistCard';
 import './Watchlist.css';
+import SyncLoader from "react-spinners/SyncLoader";
 
 const Watchlist = () => {
   
+  const [loading, setLoading] = useState(true);
   const [watchlist, setWatchlist] = useState([]);
 
   const getWatchlist = () => {
@@ -20,10 +22,14 @@ const Watchlist = () => {
       .then((data) => {
         if (!data.errors) {
           setWatchlist(data.results);
+          setLoading(false)
         } else {
           setWatchlist([]);
+          setLoading(false)
         }
       })
+    } else {
+      setLoading(false)
     }
   }
 
@@ -34,13 +40,13 @@ const Watchlist = () => {
           <h2>You are unauthorised  (•︵•)</h2>
         </div>
       )
-    } else if (watchlist.length === 0) {
+    } else if (watchlist.length === 0 && !loading) {
         return (
           <div className='error-container'>
             <h2>Your watchlist is empty (•︵•)</h2>
           </div>
         )
-    } else {
+    } else if(!loading){
       return (
         watchlist.map(movie => (
           <WatchlistCard
@@ -66,7 +72,12 @@ const Watchlist = () => {
         <div className='watchlist-precontainer'>
         <h1 className='title'>Your watchlist</h1>
           <div className="watchlist-container">
-            {checkWatchListErrors()}
+          <div className="error-container">
+            <SyncLoader color={"#fff"} size={15} loading={loading}/>
+          </div>
+            {
+               checkWatchListErrors()
+            }
           </div>
         </div>
       </div>

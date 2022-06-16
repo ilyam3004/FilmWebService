@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './MovieCard.css';
+import React from 'react';
 
 const MovieCard = ({movie, change, watchlist}) => {
   

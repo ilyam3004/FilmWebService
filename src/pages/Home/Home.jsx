@@ -4,6 +4,7 @@ import Header from '../../components/header/Header';
 import './Home.css';
 import Slider from '../../components/slider/Slider';
 import CustomSwiper from '../../components/swiper/CustomSwiper';
+import { SyncLoader } from 'react-spinners';
 
 const Home = () => {
   
@@ -12,6 +13,7 @@ const Home = () => {
   const [upComing, setUpComing] = useState([]);
   const [weekTrending, setWeekTrending] = useState([]);
   const [dayTrending, setDayTrending] = useState([]);
+  const [loading, setLoading] = useState(true)
 
   const getPopular = () => {
     fetch(`https://movie-web-api-service.herokuapp.com/api/popular`,
@@ -25,8 +27,10 @@ const Home = () => {
       .then((data) => {
         if (!data.errors) {
           setPopular(data.results);
+          setLoading(false);
         } else {
           setPopular([]);
+          setLoading(false);
         }
       })
   }
@@ -43,8 +47,10 @@ const Home = () => {
       .then((data) => {
         if (!data.errors) {
           setTopRated(data.results);
+          setLoading(false);
         } else {
           setTopRated([]);
+          setLoading(false);
         }
       })
   }
@@ -61,8 +67,10 @@ const Home = () => {
       .then((data) => {
         if (!data.errors) {
           setUpComing(data.results);
+          setLoading(false);
         } else {
           setUpComing([]);
+          setLoading(false);
         }
       })
   }
@@ -79,8 +87,10 @@ const Home = () => {
       .then((data) => {
         if (!data.errors) {
           setWeekTrending(data.results);
+          setLoading(false);
         } else {
           setWeekTrending([]);
+          setLoading(false);
         }
       })
   }
@@ -97,8 +107,10 @@ const Home = () => {
       .then((data) => {
         if (!data.errors) {
           setDayTrending(data.results);
+          setLoading(false);
         } else {
           setDayTrending([]);
+          setLoading(false);
         }
       })
   }
@@ -109,6 +121,7 @@ const Home = () => {
     getUpComing();
     getWeekTrending();
     getDayTrending();
+    getWatchlist();
   }, [])
 
   const [watchlist, setWatchlist] = useState([])
@@ -126,50 +139,58 @@ const Home = () => {
       .then((data) => {
         if (!data.errors) {
           setWatchlist(data.results);
+          setLoading(false);
         } else {
           setWatchlist([]);
+          setLoading(false);
         }
       })
     }
   }
 
-  useEffect(() => {
-    getWatchlist();
-  }, [])
-
   return (
     <div className='home-page'>
       <Header/>
-      <CustomSwiper
-        movies={popular}
-        watchlist = {watchlist}
-        change={setWatchlist} 
-      />
-      <div className="empty-container"/>
-      <Slider
-        title="Top rated"
-        movies={topRated}
-        watchlist={watchlist}
-        change={setWatchlist}
-      />
-      <Slider
-        title="Day trending"
-        movies={dayTrending}
-        watchlist={watchlist}
-        change={setWatchlist}
-      />
-      <Slider
-        title="Week trending"
-        movies={weekTrending}
-        watchlist={watchlist}
-        change={setWatchlist}
-      />
-      <Slider
-        title="Coming soon"
-        movies={upComing}
-        watchlist={watchlist}
-        change={setWatchlist}
-      />
+      <div>
+        {
+          loading 
+          ? (<div className='home-error-container'>
+              <SyncLoader loading={loading} color={"#fff"}></SyncLoader>``
+            </div>)
+          : (<div>
+              <CustomSwiper
+                movies={popular}
+                watchlist = {watchlist}
+                change={setWatchlist} 
+              />
+              <div className="empty-container"/>
+              <Slider
+                title="Top rated"
+                movies={topRated}
+                watchlist={watchlist}
+                change={setWatchlist}
+              />
+              <Slider
+                title="Day trending"
+                movies={dayTrending}
+                watchlist={watchlist}
+                change={setWatchlist}
+              />
+              <Slider
+                title="Week trending"
+                movies={weekTrending}
+                watchlist={watchlist}
+                change={setWatchlist}
+              />
+              <Slider
+                title="Coming soon"
+                movies={upComing}
+                watchlist={watchlist}
+                change={setWatchlist}
+              />
+            </div>)
+          }
+      </div>
     </div>
   )
 }

@@ -46,7 +46,6 @@ const Slider = ({movies, title, watchlist, change}) => {
             className='inner-carousel'>
             {
               movies.map((movie) => {
-                console.log(width)
                 return (
                   <motion.div className='item' key={movie.id}>
                     {resultCard(movie)}

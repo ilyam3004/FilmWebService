@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../authentication/Authentication.css';
-import Button from '../../components/ui/button/Button';
 import { useNavigate } from "react-router-dom";
 import Input from '../../components/ui/input/Input';
 

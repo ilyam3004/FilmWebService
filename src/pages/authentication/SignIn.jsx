@@ -2,7 +2,6 @@ import React from 'react'
 import { useState } from 'react'
 import './Authentication.css';
 import { Link } from 'react-router-dom';
-import Button from '../../components/ui/button/Button';
 import { useEffect } from 'react';
 import Input from '../../components/ui/input/Input';
 

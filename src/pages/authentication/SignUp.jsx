@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../authentication/Authentication.css';
 import { useNavigate } from "react-router-dom";
+import Button from '../../components/ui/button/Button';
+import Input from '../../components/ui/input/Input';
 
 const SignUp = () => {
   const [data, setData] = useState({  login: '', password: '', confirmPassword: '' });

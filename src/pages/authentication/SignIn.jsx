@@ -1,10 +1,10 @@
 import React from 'react'
 import { useState } from 'react'
 import './Authentication.css';
-import Input from '../../components/ui/input/Input.jsx'
 import Button from '../../components/ui/button/Button';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import Input from '../../components/ui/input/Input';
 
 const SignIn = () => {
   const [data, setData] = useState({  login: '', password: '' });

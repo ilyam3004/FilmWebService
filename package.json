@@ -18,7 +18,10 @@
     "react-youtube": "^9.0.2",
     "sass": "^1.51.0",
     "swiper": "^8.1.6",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "engines": {
+      "node": "16.x"
+    }
   },
   "scripts": {
     "start": "react-scripts start",

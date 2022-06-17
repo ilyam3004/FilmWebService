@@ -101,7 +101,7 @@ const ForYou = () => {
   return (
     <div className='forYou-page'>
         <Header/>
-        {checkRecomendationsErrors()}
+        {/* {checkRecomendationsErrors()} */}
     </div>
   )
 }

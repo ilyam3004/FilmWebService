@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin&family=Proza+Libre&display=swap');
+
+
+.watchlist-page{
+    background-color: #212121;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+    height: 100hv + 100px;
+    min-height: 100%;
+}
+
+.title{
+    color: #fff;
+    font-size: 30px;
+    font-family: 'Libre Franklin', serif;
+    background: linear-gradient(to right, #ea1538, #ea1538 50%, #fff 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 2s ease-in-out;
+}
+
+.title:hover{
+  background-position: 0 100%;
+}
+
+.watchlist-precontainer{
+    width: 56%;
+    margin: auto;
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+
+.watchlist-container{
+    margin-top: 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 18px;
+    grid-row-gap: 20px;
+    width: 100%;
+}
+
+.error-container{
+    margin: auto;
+    width: 56%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    height: 50%;
+    align-items: center;
+    color: rgb(174, 174, 174);
+    font-family: 'Proza Libre', serif;
+}

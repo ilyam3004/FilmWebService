@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../components/header/Header';
 import WatchlistCard from '../../components/movie-card/WatchlistCard';
-import './Watchlist.css';
 import SyncLoader from "react-spinners/SyncLoader";
+import './WatchlistStyle.css';
 
 const Watchlist = () => {
   

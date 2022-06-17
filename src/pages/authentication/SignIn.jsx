@@ -3,8 +3,8 @@ import { useState } from 'react'
 import './Authentication.css';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
-import Input from '../../components/ui/input/Input';
 import Button from '../../components/ui/button/Button';
+import Input from '../../components/ui/input/Input';
 
 const SignIn = () => {
   const [data, setData] = useState({  login: '', password: '' });
